@@ -1,11 +1,19 @@
 def main()
+    lives = 5
     success = false
     while success != true
-        input = getNum()
-        randomNum = generateNum()
-        success = checkNumbers(input, randomNum)
+        if lives === 0
+            puts("-------------------------\nGame Over 💣\n-------------------------")
+            exit()
+        else 
+            puts("-------------------------\nYou have #{lives.to_s} lives left... ⏳")
+            input = getNum()
+            randomNum = generateNum()
+            success = checkNumbers(input, randomNum)
+            lives = lives - 1
+        end
     end
-    puts("You win!! 🎉")
+    puts("-------------------------\nYou win!! 🎉\n-------------------------")
 end
 
 def getNum()
@@ -16,7 +24,7 @@ end
 
 def generateNum()
     puts("Generating a random number...")
-    randomNum = rand(1..3)
+    randomNum = rand(1..5)
     puts(randomNum)
     return randomNum
 end
